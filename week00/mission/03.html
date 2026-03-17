@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ToDoList 제작</title>
+        <style>
+            body {
+                background-color: rgb(237, 252, 225);
+                text-align: center;
+            }
+            h1 {
+                color : rgb(25, 224, 101);
+            }
+            h2 {
+                text-decoration: underline;
+                text-align: center;
+                margin: 50px auto;
+            }
+            section {
+                display: inline-block;
+                width: 400px;
+                text-align: center;
+                vertical-align: top;
+            }
+            input {
+                display : block;
+                margin: 0 auto;
+                width : 500px;
+                height: 20px;
+            }
+            li {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin: 10px 0;
+            }
+            button {
+                background-color: rgb(251, 254, 253);
+                border-radius: 5px;
+                border-color: gray;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1 class="center">UMC Study Plan</h1>
+        </header>
+
+        <form>
+            <input type="text" id="in_put" placeholder="스터디 계획을 작성해보세요!" required>
+        </form>
+
+        <section>
+            <h2>해야 할 일</h2>
+            <ul id="todo_list"></ul>
+
+        </section>
+
+        <section>
+            <h2>해낸 일</h2>
+            <ul id="done_list"></ul>
+
+        </section>
+
+        <script>
+            const customInput = document.getElementById("in_put");
+            const todoSection = document.querySelectorAll("section")[0];
+            
+            function addTodo(){
+                const value = customInput.value.trim(); //입력한 값 저장
+
+                    const list = document.getElementById("todo_list"); //리스트 틀 생성
+                    const li = document.createElement("li"); //리스트 li 요소 생성
+                    li.textContent = value; //li 요소에 입력 값 저장
+
+                    const btn = document.createElement("button"); //버튼 요소 생성
+                    btn.textContent = "완료"; //버튼에 텍스트 저장
+
+                    list.appendChild(li); //li 요소 리스트에 추가
+                    li.appendChild(btn); //버튼을 li 요소에 추가
+
+                    customInput.value = ""; //입력창 초기화
+
+                    const donelist = document.getElementById("done_list"); //완료한 일 리스트 틀 생성
+                    btn.addEventListener("click", function(){ //완료 버튼 클릭 시
+                        if(btn.textContent === "완료"){ //li 요소가 삭제된게 아니라 이동된거니까 이벤트 하나로 합치기
+                            completeTodo(donelist, li, btn);
+                        }
+                        else { //삭제 버튼 눌렀을 때
+                            deleteTodo(li);    
+                        }
+                    })
+            }
+            //ver2 다시 푸시
+            function completeTodo(donelist, li,btn){
+                donelist.appendChild(li); //해낸 일 리스트에 li 요소로 옮기기(이동)
+                btn.textContent = "삭제"; //버튼 텍스트 변경
+            }
+
+            function deleteTodo(li){
+                li.remove(); //li 요소 삭제(!=이동)
+            }
+
+            customInput.addEventListener("keydown",function(e){ //입력창에 키보드 엔터칠 때
+                if(e.key === "Enter"){
+                    e.preventDefault();
+
+                    addTodo(); //리팩토링 -> 이벤트 간소화
+                }  
+            })
+        </script>
+    </body>
+</html>
