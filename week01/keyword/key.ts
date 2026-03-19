@@ -18,4 +18,3 @@ const matthew = { name: 'matthew'}; //객체리터럴 -> string으로 취급
 matthew.name = 'hi'; 
 
 const name2 : "netflix" = "netflix"; //문자리터럴 -> 수정 불가
-name2 = "tving";

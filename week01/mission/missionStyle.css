@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; <- 이 줄을 지우거나 아래처럼 변경 */
+    padding-top: 50px; 
+    background-color: rgb(237, 252, 225);
+    text-align: center;
+    min-height: 100vh; /* height 대신 min-height 사용 */
+}
+
+.todo-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 600px; /* 350px은 너무 좁아서 두 줄이 겹칠 수 있습니다 */
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color : black;
+    margin-bottom: 15px;
+}
+
+.render-container__title {
+    font-size: 18px;
+    text-decoration: underline;
+    text-align: center;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.todo-container__form {
+    display: flex;
+    gap : 10px;
+    margin-bottom: 20px;
+}
+
+.todo-container__input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.todo-container__btn {
+    background-color: green;
+    color:white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.render-container__section {
+    width: 100%;
+    text-align: left;
+
+}
+
+.render-container__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.render-container {
+    display: flex;
+    flex-direction: column; /* 해야 할 일 아래에 해낸 일이 오도록 변경 */
+    gap: 30px; /* 두 섹션 사이 간격 */
+}
+
+.render-container__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    width: 100%;
+}
+
+.render-container_item-text {
+    flex: 1;
+}
+
+.render-container__item-btn {
+    background-color: red;
+    color:white;
+    border: none;
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+
